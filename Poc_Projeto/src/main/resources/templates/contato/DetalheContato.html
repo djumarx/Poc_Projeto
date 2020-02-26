@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+	
+<head>
+    <title th:text="${contato.nome}">João</title>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/upload.min.css}"/>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<h1 th:text="${contato.nome}">João</h1>
+		</div>
+    </div>
+    <div class="container-fluid">
+        <div class="rol">
+            <div class="col-sm-9 js-container-foto">
+                <!--
+
+                    <img th:src="${vinho.url}" th:if="${vinho.temFoto()}" class="img-responsive" style="margin:auto"/>
+                -->
+
+                <div id="upload-drop" class="wn-upload" th:attr="data-codigo=${contato.id}"
+                        th:if="${not contato.temFoto()}">
+                    <img th:src="@{/layout/images/sem-imagem.jpg}"/>
+                    <div>
+                        <span>Arraste a foto aqui ou </span>
+                            <a class="wn-upload-form-file"> selecione <input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+                    </div>
+                </div>
+                
+              <!-- <div id="progressbar" class="uk-progress uk-hidden">
+                    <div class="uk-progress-bar" style="width: 0%;">...</div>
+                </div> -->
+            </div>
+            <div class="col-sm-3">
+                <ul class="list-group">
+                    <li class="list-group-item" th:text="|${contato.apelido}|">Jão</li>
+                    <li class="list-group-item" th:text="|${contato.whats}|">+5511987650987</li>
+                    <li class="list-group-item" th:text="${contato.tel}">(11) 5555-6666</li>
+                    <li class="list-group-item" th:text="|${#dates.format(contato.dtNasc, 'dd/MM/yyyy')}|">01/01/2001</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<th:block layout:fragment="javascript-extra">
+    <script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
+    <script th:src="@{/javascripts/vendors/upload.min.js}"></script>
+    <!--
+        <script th:src="@{/javascripts/vinho.upload-foto.js}"></script>
+    -->
+</th:block>
+
+</body>
+</html>
