@@ -1,5 +1,5 @@
 CREATE TABLE  contatoS (
-    codigo BIGSERIAL,
+    id BIGSERIAL,
     nome VARCHAR(50) NOT NULL,
     apelido VARCHAR(50) NOT NULL,
     whats VARCHAR(15) NOT NULL,
