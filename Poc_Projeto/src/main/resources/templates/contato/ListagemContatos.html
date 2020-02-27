@@ -23,7 +23,7 @@
 				<div class="col-xs-2">
 					<div class="aw-page-header-controls">
 						<a class="btn btn-primary" th:href="@{/contatos/novo}">
-							<i class="fa  fa-plus-circle"></i> <span class="hidden-xs  hidden-sm">Novo produto</span>
+							<i class="fa  fa-plus-circle"></i> <span class="hidden-xs  hidden-sm">Novo contato</span>
 						</a>
 					</div>
 				</div>
@@ -53,7 +53,7 @@
 				<tbody>
 					<tr th:each="contato : ${Contatos}">
 						<td th:text = "${contato.id}">1</td>
-						<td><a th:href="@{/Contatos/{id}(id=${contato.id})}" th:text = "${contato.nome}">João das neves</a> </td>
+						<td><a th:href="@{/contato/{id}(id=${contato.id})}" th:text = "${contato.nome}">João das neves</a> </td>
 						<td th:text = "${contato.apelido}">João N</td>
 						<td th:text = "${contato.whats}">11998833084</td>
 						<td th:text = "${contato.tel}">11998833084</td>
@@ -62,8 +62,9 @@
 					<tr th:if="${Contatos.empty}" >
 						<td colspan="6">Nenhum contato Cadastrado</td>
 					</tr>
-
-
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 </section>
