@@ -7,7 +7,7 @@
 <head>
     <title th:text="${contato.nome}">João</title>
     
-    <link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/upload.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/layout/stylesheets/upload.min.css}"/>
 </head>
 
 <body>
@@ -21,10 +21,9 @@
     <div class="container-fluid">
         <div class="rol">
             <div class="col-sm-9 js-container-foto">
-                <!--
 
-                    <img th:src="${vinho.url}" th:if="${vinho.temFoto()}" class="img-responsive" style="margin:auto"/>
-                -->
+
+                    <img th:src="${contato.url}" th:if="${contato.temFoto()}" class="img-responsive" style="margin:auto"/>
 
                 <div id="upload-drop" class="wn-upload" th:attr="data-codigo=${contato.id}"
                         th:if="${not contato.temFoto()}">
@@ -52,11 +51,9 @@
 </section>
 
 <th:block layout:fragment="javascript-extra">
-    <script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
-    <script th:src="@{/javascripts/vendors/upload.min.js}"></script>
-    <!--
-        <script th:src="@{/javascripts/vinho.upload-foto.js}"></script>
-    -->
+    <script th:src="@{/layout/javascripts/vendors/uikit.min.js}"></script>
+    <script th:src="@{/layout/javascripts/vendors/upload.min.js}"></script>
+    <script th:src="@{/layout/javascripts/contato.upload-foto.js}"></script>
 </th:block>
 
 </body>

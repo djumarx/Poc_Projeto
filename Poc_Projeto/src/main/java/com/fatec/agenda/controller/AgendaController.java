@@ -1,29 +1,28 @@
 package com.fatec.agenda.controller;
 
-import java.util.Date;
-
 import com.fatec.agenda.model.Contato;
+import com.fatec.agenda.storage.FotoStorage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/agenda")
+@RequestMapping("/contato")
 public class AgendaController {
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ModelAndView detalhe(Integer id) {
+    @Autowired
+	private FotoStorage fotoStorage;
+
+    @RequestMapping(value = "/{id}")
+    public ModelAndView detalhe(@PathVariable("id") Contato contato) {
         ModelAndView mv = new ModelAndView("/contato/DetalheContato");
-        Contato contato = new Contato();
-        contato.setId(1);
-        contato.setNome("João da Silva");
-        contato.setApelido("Jãozim");
-        contato.setWhats("+55123450987");
-        contato.setTel("(11) 9876-3645");
-        contato.setDtNasc(new Date(2001-1900, 1, 1));
         mv.addObject("contato", contato);
-        return mv;
+		if(contato.temFoto()){
+			contato.setUrl(fotoStorage.getUrl(contato.getFoto()));
+		}
+		return mv;
     }
 }
