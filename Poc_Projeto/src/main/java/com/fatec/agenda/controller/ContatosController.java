@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fatec.agenda.model.Contato;
 import com.fatec.agenda.repository.Contatos;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class ContatosController {
 	private Contatos contatos;
 
 	@RequestMapping("/novo")
-	public String novo() {
+	public String novo(Contato contato) {
 		return "/contato/CadastroContato";
 	}
 	
