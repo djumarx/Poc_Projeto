@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+	
+<head>
+	<title>Agenda</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>
+						Listagem de contatos
+					</h1>
+				</div>
+			
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn btn-primary" th:href="@{/contatos/novo}">
+							<i class="fa  fa-plus-circle"></i> <span class="hidden-xs  hidden-sm">Novo produto</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+				
+				
+	
+	
+		
+		<div class="table-responsive">
+			<table id="tabela-produtos" class="table  table-striped  table-bordered  table-hover  table-condensed  js-sticky-table">
+				<thead class="aw-table-header-solid">
+					<tr>
+						 
+						<th>Codigo </th>
+						<th>Nome </th>
+						<th>Apelido </th>
+						<th>Whats</th>
+						<th>Telefone</th>
+						<th>Data de Nasc.</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="contato : ${Contatos}">
+						<td th:text = "${contato.id}">1</td>
+						<td><a th:href="@{/Contatos/{id}(id=${contato.id})}" th:text = "${contato.nome}">João das neves</a> </td>
+						<td th:text = "${contato.apelido}">João N</td>
+						<td th:text = "${contato.whats}">11998833084</td>
+						<td th:text = "${contato.tel}">11998833084</td>
+						<td th:text = "${contato.dtNasc}">26/10/1976</td>
+					</tr>
+					<tr th:if="${Contatos.empty}" >
+						<td colspan="6">Nenhum contato Cadastrado</td>
+					</tr>
+
+
+	</div>
+
+</section>
+</body>
+</html>

@@ -13,8 +13,12 @@ public class ContatosController {
 	}
 	
 	@RequestMapping
-	public String pesquisa() {
-		return "/contato/PesquisaContatos";
+	public ModelAndView pesquisa() 
+	{	
+		ModelAndView mv = new ModelAndView("/Contato/ListagemContato");
+		mv.addObject("Contatos",Contato.FindAll());
+		return mv;
+		
 	}
 	
 }
