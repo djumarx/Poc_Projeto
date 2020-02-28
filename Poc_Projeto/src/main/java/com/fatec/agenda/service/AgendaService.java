@@ -22,7 +22,7 @@ public class AgendaService {
     }
 
     public String salvarFoto(Long id, MultipartFile foto) {
-        Contato contato = contatos.findById(id).get();
+        Contato contato = contatos.findOne(id);
         String nomeFoto = fotoStorage.salvar(foto);
         contato.setFoto(nomeFoto);
         contatos.save(contato);

@@ -2,6 +2,7 @@ package com.fatec.agenda.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fatec.agenda.dto.ContatoDTO;
@@ -29,7 +30,7 @@ public class ContatosController {
 		mv.addObject("Contatos",contatos.findAll());
 		return mv;
 	}
-	@RequestMapping
+	@RequestMapping(value = "/novo", method = RequestMethod.POST)
 	public ModelAndView cadastro(ContatoDTO contatodto){
 		Contato contato = new Contato();
 		contato.setNome(contatodto.nome);
