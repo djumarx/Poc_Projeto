@@ -31,6 +31,7 @@ public class Contato {
     @Transient
     private String url;
 
+    
 
     public Long getId() {
         return id;
